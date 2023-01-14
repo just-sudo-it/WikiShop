@@ -1,6 +1,3 @@
-# inf165-webdev-project
-Βασική δομή ενός project για τις ανάγκες της εργασίας 2 του μαθήματος INF165.
-
 ```bash
 .
 ├── index.js
