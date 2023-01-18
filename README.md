@@ -10,28 +10,19 @@
         └── main.js
 ```
 
-Οι απαραίτητες εξαρτήσεις υπάρχουν ήδη στο package.json. 
-Μπορείτε να τις εγκαταστήσετε με χρήση της εντολής
+Required dependencies in package.json
+Install using the command :
 ```
 npm install
 ```
 
-Για να δοκιμάσετε την εφαρμογή σας μπορείτε να την ξεκινήσετε με την εντολή
+To test the app run :
 ```
 node index.js
 ```
 
-Βέβαια, μετά από κάθε αλλαγή στον κώδικα του server θα πρέπει να κάνετε επανεκκίνηση της εφαρμογής. Για διευκόλυνσή σας μπορείτε να ξεκινήσετε την εφαρμογή με τη βοήθεια του εργαλείου nodemon ως εξής:
+After everychange in the sever source code, redeploy or run with nodemon to reflect latest changes, using the command:
 
 ```
 nodemon index.js
 ```
-
-Κάθε φορά που αλλάζετε τον κώδικα του server, το nodemon επανεκκινεί αυτόματα τον server.
-
-## Χρήσιμες βιβλιοθήκες
-
-- [Handlebars](https://handlebarsjs.com/guide/): γλώσσα για τη σύνταξη υποδειγμάτων (templates) για δυναμική παραγωγή HTML περιεχομένου,
-- [expressjs](https://expressjs.com/en/guide/routing.html): γρήγορη υλοποίηση υπηρεσιών ιστού,
-- [uuid](https://www.npmjs.com/package/uuid): παραγωγή μοναδικών αναγνωριστικών,
-- [nodemon](https://www.npmjs.com/package/nodemon): εργαλείο για αυτόματη επανεκκίνηση μιας Node.js εφαρμογής, σε περίπτωση αλλαγών στα αρχεία της εφαρμογής.
