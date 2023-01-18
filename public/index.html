@@ -1,34 +1,138 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>My application</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+        type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css" />
 
-    <!-- Load the Handlebars library. The Handlebars object is 
-    now available in the rest of the scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
-    <!--
-        Load the JS code for the page. The code is located inside the public folder.
-        However, express serves this content under root path (see appropriate command in index.js)
-    -->
-    <script src="/js/main.js" type="text/javascript"></script>
-
-    <!--
-        Load CSS stylesheets from folder public/css/style.css.
-        Express serves this content, also, under the root path.
-    -->
-    <link rel="stylesheet" href="/css/style.css">
-
+    <title>iFashion</title>
 </head>
 
 <body>
-    <h1>Application start page</h1>
 
-    <p>The page should be loaded from your Node server at URL location <a href="http://localhost:8080/">http://localhost:8080/</a></p>
-    <p>Create appropriate request handlers in file <code>index.js</code> </p>
+    <div class="grid-container">
 
+        <header id="pageHeader" class="site-header">
+            <a href="./index.html">
+                <img src="../images/logo.png" alt="logo" class="logo">
+            </a>
+
+            <input class="menu-btn" id="menu-btn" type="checkbox" />
+
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn">
+                <span class="navicon"></span>
+            </label>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product-categories.html">Products</a></li>
+                <li><a href="about-us">About us</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+        </header>
+
+        <main id="mainArticle">
+            <h2 style="width: 100%; text-align: center;font-size: 2rem; font-weight: 500; letter-spacing: 1rem;">Fashion
+                Store.
+                The best way to buy the products you love.</h2>
+            <img src="../images/main-background.jpg" alt="main-background" class="hero-img">
+
+            <h2 style="margin-left: 5%;">Your Online Shop for Fashion Apparel, Accessories, and more
+            </h2>
+            <p style=" width:80%;margin:auto;margin-bottom: 60px;">Discover the latest fashion trends and shop for the
+                best apparel and accessories.
+                Explore our various products and find the perfect fashion item for you.
+                Enjoy discounts and offers on famous fashion brands.
+                <br> Ready to update your wardrobe?
+                Browse through our wide selection and elevate your style.
+                <br>Ready to shop now?
+            </p>
+
+            <section class="basic-info-row">
+                <div class="col left">
+                    <div class="frame">
+                        <h2>About</h2>
+                        <p>
+                            We are a leading fashion e-commerce company, offering a wide selection of apparel and
+                            accessories for men, women, and children.
+                            Our mission is to bring you the latest fashion trends and high-quality products at
+                            affordable prices.
+                            With our easy online shopping and fast shipping, you can shop from the comfort of your own
+                            home.
+                        </p>
+                    </div>
+                    <div class="frame">
+                        <h2>The Fashion Store difference.<br>Even more reasons to shop with us.</h2>
+                        <p>Enjoy free delivery or easy in-store pickup.
+                            Free extended returns.
+                            Easy exchange and return policy.
+                            Pay in full or pay over time. Your choice.
+                        </p>
+                    </div>
+                    <div class="frame">
+                        <h2>You Can Rely on the Fashion Store</h2>
+                        <p>
+                            The Fashion Store team is dedicated to providing excellent customer service and high-quality
+                            products.
+                            We have a team of fashion experts to ensure that we are always up to date on the latest
+                            trends.
+                            We have a wide selection of products and constantly update our inventory to bring you the
+                            latest fashion.
+                            Trust us to help you elevate your style.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col right" id="categories_id">
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-content" id="pageFooter">
+            <h3>iFashion</h3>
+            <p>iFashion Works smarter.Plays harder.Goes further.Oriented towards professionals ready
+                to push their creativity, these industry-leading apps offer maximum
+                control over editing, processing, and output of fashion and styles.
+            </p>
+            <h3 style="color:white!important">Don’t take it lightly.</h3>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/lefteris-michailidis-514525150/"><i
+                            class="fa fa-linkedin-square"></i></a></li>
+            </ul>
+
+            <div class="footer-bottom">
+                <p>copyright &copy; <a href="#">Lefteris Michailidis - 0030 6982525424</a> </p>
+                <div class="footer-menu">
+                    <ul class="f-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product-categories.html">Products</a></li>
+                        <li><a href="contact-us.html" class="w3-bar-item w3-button">Contact Us</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
 
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
+<script src="./js/main.js"></script>
+<script id="handlebars-demo" type="text/x-handlebars-template">
+        {{#each categories}}
+        <div class="card">
+            <img src="{{img_url}}" alt="icon">
+                 <h4>{{title}}</h4>
+                    {{desc}}
+                <a href="html/products-categories.html?categoryId={{id}}" class="nav-button">More</a>
+         </div>
+        {{/each}}
+</script>
 
 </html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+        type='text/css'>
+    <title>Contact Us</title>
+</head>
+
+<body>
+    <div class="grid-container">
+        <header id="pageHeader" class="site-header">
+            <a href="index.html">
+                <img src="../images/logo.png" alt="logo" class="logo">
+            </a>
+
+            <input class="menu-btn" id="menu-btn" type="checkbox" />
+
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn">
+                <span class="navicon"></span>
+            </label>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product-categories.html">Products</a></li>
+                <li><a href="about-us.html">About us</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+        </header>
+
+        <main id="mainArticle">
+            <img src="../images/contact-us.jpg" alt="main-background" class="hero-img">
+            <section style="height: auto;">
+                <div class="card col-50 frame information-card icon-component">
+                    <img src="../images/24-hours.png" alt="icon">
+                    <h3>All around the clock</h3>
+                    <h5>Our real-time response always satisfies the end user.</h5>
+                </div>
+                <div class="card col-50 frame information-card icon-component">
+                    <img src="../images/contact-us-icon1.png" alt="icon">
+                    <h3>Always With you</h3>
+                    <h5>If you are interested in us, please complete the form .</h5>
+                </div>
+                <div id="form-container-id">
+                    <h3>How Can We Help?</h3>
+                    <h4>Please fill in the information below</h4>
+                    <fieldset id="form-id">
+                        <form method="post">
+                            <ul class="form-list">
+                                <li>
+                                    <label for="fname">Name : <abbr title="required"
+                                            aria-label="required">*</abbr></label><br>
+                                    <input type="text" id="fname" autocomplete="given-name" name="fname"
+                                        pattern="[Α-Ω]{*} [α-ω]{*}" required title="[Α-Ω]* [α-ω]*" size="50"><br>
+                                </li>
+                                <li>
+                                    <label for="email">Email : <abbr title="required" aria-label="required"
+                                            size="50">*</abbr></label><br>
+                                    <input type="email" id="email" name="email" required><br>
+                                </li>
+                                <li>
+                                    <label for="phonenum">Phone Number:</label><br>
+                                    <input type="tel" autocomplete="tel" id="phonenum" name="phone" size="50">
+                                </li>
+                                <li>
+                                    <label for="fname">Product SKU : </label><br>
+                                    <input type="text" list="sku-list" id="country" name="country" required
+                                        minlength="4" maxlength="14" size="50" autocomplete="off" />
+
+                                    <datalist id="sku-list">
+                                        <option>001-3214</option>
+                                        <option>002-3214</option>
+                                        <option>003-3214</option>
+                                        <option>004-3210</option>
+                                        <option>001-78214</option>
+                                        <option>001-9214</option>
+                                    </datalist>
+                                </li>
+                                <li>
+                                    <label for="fname"> Invoice(Optional) : </label><br>
+                                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                                </li>
+                                <li>
+                                    <label for="start">Date Purchased:</label>
+                                    <input type="date" id="start" name="trip-start" value="2022-11-22" min="2018-01-01"
+                                        max="2023-12-31">
+
+                                </li>
+                                <li>
+                                    <label for="msg">Message : <abbr title="required" aria-label="required"
+                                            size="600">*</abbr></label><br>
+                                    <textarea id="msg" name="user_message"></textarea>
+                                </li>
+                            </ul>
+                            <br>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </fieldset>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-content" id="pageFooter">
+            <h3>i-Tech</h3>
+            <p>i-Tech Works smarter.Plays harder.Goes further.Oriented towards professionals ready
+                to push their creativity, these industry-leading apps offer maximum
+                control over editing, processing, and output of music and film.
+            </p>
+            <h3 style="color:white!important">Don’t take it lightly.</h3>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/lefteris-michailidis-514525150/"><i
+                            class="fa fa-linkedin-square"></i></a></li>
+            </ul>
+
+            <div class="footer-bottom">
+                <p>copyright &copy; <a href="#">Lefteris Michailidis - 0030 6982525424</a> </p>
+                <div class="footer-menu">
+                    <ul class="f-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product-categories.html">Products</a></li>
+                        <li><a href="contact-us.html" class="w3-bar-item w3-button">Contact Us</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                    </ul>
+                </div>
+        </footer>
+    </div>
+</body>
+
+</html>
