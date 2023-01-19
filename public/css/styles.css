@@ -537,6 +537,35 @@ h4 {
   font-weight: 600;
   padding: 5px;
 }
+/* products filter style */
+/* Add a wrapper class to the filter */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Style the labels */
+.category-filter label {
+  flex: 1;
+  text-align: center;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Style the radio buttons */
+.category-filter input[type="radio"] {
+  display: none; /* Hide the radio buttons */
+}
+
+/* Style the radio button labels when selected */
+.category-filter input[type="radio"]:checked + label {
+  background-color: #f2f2f2;
+  color: #333;
+}
 
 /* information card styles */
 .information-card {

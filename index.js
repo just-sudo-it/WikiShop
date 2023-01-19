@@ -30,7 +30,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/about-us", (req, res) => {
-  res.sendFile(__dirname + "/public/html/about-us.html"),
+  res.sendFile(__dirname + "/public/html/about-us"),
     function (err) {
       console.log(err);
     };

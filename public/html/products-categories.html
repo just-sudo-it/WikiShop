@@ -21,7 +21,6 @@
 
             <input class="menu-btn" id="menu-btn" type="checkbox" />
 
-            <input class="menu-btn" type="checkbox" id="menu-btn" />
             <label class="menu-icon" for="menu-btn">
                 <span class="navicon"></span>
             </label>
@@ -42,8 +41,15 @@
             <section class="basic-info-row">
                 <div class="col">
                     <div class="col courses-col1">
-                        <div id="templated_products_id">
 
+                        <div class="side-menu">
+                            <h3>Sub-categories</h3>
+                            <form id="subcategory-form">
+                                <div id="templated_subcategories_id"></div>
+                            </form>
+                        </div>
+
+                        <div id="templated_products_id" class="category-filter">
                         </div>
                     </div>
 
@@ -125,5 +131,14 @@
         </a>
     {{/each}}
 </script>
+<script id="handlebars-subcategory-frame" type="text/x-handlebars-template">
+    {{#each subcategories}}
+    <label class="category-filter">
+        <input class="category-filter" type="radio" name="subcategory" value="{{id}}" {{#if @first}}checked{{/if}}>
+        {{title}}
+    </label>
+    {{/each}}
+</script>
+
 
 </html>
