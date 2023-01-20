@@ -47,3 +47,22 @@ app.post("/login", (req, res) => {
   }
   res.status(200).json({ sessionId: result.sessionId });
 });
+
+app.post("/logout", (req, res) => {
+  const { sessionId } = req.body;
+  const result = loginService.logout(sessionId);
+  if (result.error) {
+    res.status(401).json({ error: result.error });
+  }
+  res.status(200).json({ message: result.message });
+});
+
+app.post("/register", (req, res) => {
+  const { username } = req.body;
+  const result = loginService.register(username);
+
+  if (result.error) {
+    return res.status(409).send({ error: "Username already exists" });
+  }
+  res.status(201).send({ message: "User successfully registered" });
+});

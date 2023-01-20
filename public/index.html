@@ -229,18 +229,18 @@
 
                         <div class="container" id="container">
                             <div class="form-container sign-up-container">
-                                <form action="#">
+                                <form action="/register" method="post">
                                     <h1>Create Account</h1>
-                                    <input type="text" placeholder="Name" />
-                                    <input type="password" placeholder="Password" />
+                                    <input type="text" name="username" placeholder="Name" />
+                                    <input type="password" name="password" placeholder="Password" />
                                     <button>Sign Up</button>
                                 </form>
                             </div>
                             <div class="form-container sign-in-container">
-                                <form action="#">
+                                <form action="/login" method="post">
                                     <h1>Sign in</h1>
-                                    <input type="email" placeholder="Email" />
-                                    <input type="password" placeholder="Password" />
+                                    <input type="text" name="username" placeholder="Name" />
+                                    <input type="password" name="password" placeholder="Password" />
                                     <button>Sign In</button>
                                 </form>
                             </div>
