@@ -12,8 +12,9 @@
 
 <body>
     <div class="grid-container">
+
         <header id="pageHeader" class="site-header">
-            <a href="index.html">
+            <a href="/">
                 <img src="../images/logo.png" alt="logo" class="logo">
             </a>
 
@@ -24,10 +25,45 @@
             </label>
             <ul class="menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="product-categories.html">Products</a></li>
+                <li><a href="./product-categories.html">Products</a></li>
                 <li><a href="about-us.html">About us</a></li>
                 <li><a href="contact-us.html">Contact Us</a></li>
+                <li><a class="trigger" style="padding: 10px;cursor: pointer;">
+                        <img src="../images/account-icon.jpg" class="account" alt="account-icon">
+                    </a>
+                </li>
             </ul>
+            <!-- Simple login dialog box, containing a form -->
+            <div class="popup">
+                <div class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h1>Hello, I am a modal!</h1>
+                    </div>
+                </div>
+
+                <!-- Script included here only because it belongs solely 
+                     to the header are that should be abstracted to a standalone component -->
+                <script>
+                    const modal = document.querySelector(".modal");
+                    const trigger = document.querySelector(".trigger");
+                    const closeButton = document.querySelector(".close-button");
+
+                    trigger.addEventListener("click", toggleModal);
+                    closeButton.addEventListener("click", toggleModal);
+                    window.addEventListener("click", windowOnClick);
+                    function toggleModal() {
+                        modal.classList.toggle("show-modal");
+                    }
+
+                    function windowOnClick(event) {
+                        if (event.target === modal) {
+                            toggleModal();
+                        }
+                    }
+                </script>
+
+            </div>
         </header>
 
         <main id="mainArticle">

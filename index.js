@@ -1,5 +1,8 @@
 const express = require("express");
 const path = require("path");
+// MY DEPENDENCIES
+const loginService = require("./services/LoginService");
+
 const app = express();
 const port = 8080;
 
@@ -34,4 +37,13 @@ app.get("/about-us", (req, res) => {
     function (err) {
       console.log(err);
     };
+});
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  const result = loginService.authenticate(username, password);
+  if (result.error) {
+    return res.status(401).json({ error: result.error });
+  }
+  res.status(200).json({ sessionId: result.sessionId });
 });

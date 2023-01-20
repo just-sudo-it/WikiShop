@@ -3,18 +3,26 @@ let allSubcategories;
 
 const params = new URLSearchParams(window.location.search);
 const categoryID = params.get("categoryId");
+const basicHeaders = new Headers();
+basicHeaders.append("Accept", "application/json");
+
+const getRequestOptions = { method: "GET", headers: basicHeaders };
 const handlebarsHook = document.getElementById("templated_products_id");
 const handlebarsSubcategoryHook = document.getElementById(
   "templated_subcategories_id"
 );
+const subcategoryForm = document.querySelector("#subcategory-form");
 
-const basicHeaders = new Headers();
-basicHeaders.append("Accept", "application/json");
-const getRequestOptions = { method: "GET", headers: basicHeaders };
+//hook event listener for subcategory filtering
+subcategoryForm.addEventListener("change", (event) => {
+  const selectedSubcategory = event.target.value;
+  const products = getProductsBySubcategory(selectedSubcategory);
+  renderCategoryProducts(products);
+});
 
-loadData();
+Init();
 
-async function loadData() {
+async function Init() {
   try {
     const [products, subcategories] = await Promise.all([
       getProducts(),
@@ -68,7 +76,9 @@ async function getSubcategories() {
       `https://wiki-shop.onrender.com/categories/${categoryID}/subcategories`,
       getRequestOptions
     );
-    return await response.json();
+    const subcategories = await response.json();
+    subcategories.unshift({ id: 0, category_id: 0, title: "All" });
+    return subcategories;
   } catch (err) {
     console.error("Error: ", err);
   }
@@ -76,14 +86,8 @@ async function getSubcategories() {
 
 function getProductsBySubcategory(subcategoryId) {
   return allProducts.filter(
-    (product) => product.subcategory_id === parseInt(subcategoryId)
+    (product) =>
+      product.subcategory_id === parseInt(subcategoryId) ||
+      parseInt(subcategoryId) === 0
   );
 }
-
-//hook event listener for subcategory filtering
-const subcategoryForm = document.querySelector("#subcategory-form");
-subcategoryForm.addEventListener("change", (event) => {
-  const selectedSubcategory = event.target.value;
-  const products = getProductsBySubcategory(selectedSubcategory);
-  renderCategoryProducts(products);
-});

@@ -140,6 +140,49 @@ ul li {
   display: block;
 }
 
+/* BASIC MODAL STYLING (POPUP */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 1.5rem;
+  width: 55%;
+  border-radius: 0.5rem;
+}
+.close-button {
+  float: right;
+  font-size: 30px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: lightgray;
+}
+.close-button:hover {
+  background-color: darkgray;
+}
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+/*-------------*/
+
 /**/
 /* header */
 
@@ -178,6 +221,12 @@ ul li {
   float: left;
   font-size: 2em;
   padding: 10px 20px;
+  text-decoration: none;
+}
+.site-header .account {
+  display: inline-block;
+  height: 70px;
+  padding: 10px;
   text-decoration: none;
 }
 
@@ -261,7 +310,7 @@ ul li {
 }
 .hero-img {
   width: 100%;
-  height: 86vh;
+  height: 70vh;
   max-height: 55rem;
   object-fit: cover;
   float: right;
@@ -407,7 +456,6 @@ div.col {
 }
 
 .product-card {
-  width: 22%;
   height: 540px;
   padding: 10px;
   margin: 20px;
@@ -445,11 +493,13 @@ h5 {
 }
 
 .product-card > div.description {
-  height: 130px;
+  height: 100px;
+  max-height: 100px;
   width: 95%;
   margin: auto;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-wrap: break-word;
   margin-bottom: 20px;
 }
 
@@ -542,7 +592,8 @@ h4 {
 .category-filter {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   padding: 10px;
 }
 
@@ -557,14 +608,17 @@ h4 {
 }
 
 /* Style the radio buttons */
-.category-filter input[type="radio"] {
-  display: none; /* Hide the radio buttons */
+input.category-filter {
+  display: none !important;
 }
-
-/* Style the radio button labels when selected */
-.category-filter input[type="radio"]:checked + label {
-  background-color: #f2f2f2;
-  color: #333;
+/* Style the radio buttons */
+input[type="radio"]:checked + label {
+  background-color: var(--orange1);
+  color: white;
+}
+/* Add a ripple effect on click */
+.category-filter:active {
+  background-color: #e5e5e5;
 }
 
 /* information card styles */
@@ -945,7 +999,9 @@ footer {
   }
   .site-header li a {
     padding: 20px 30px;
+    line-height: 42px;
   }
+
   .site-header .menu {
     clear: none;
     float: right;
