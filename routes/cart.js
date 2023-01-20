@@ -20,18 +20,15 @@ router.post("/", (req, res) => {
   res.status(200).json({ sessionId: result.sessionId });
 });
 
-router.post("/", async (req, res) => {
+router.post("/cart", async (req, res) => {
   const sessionId = req.headers["session-id"];
   const { productId, username } = req.body;
 
   const user = await User.findOne({ username, sessionId });
-  if (!user) {
-    return res.status(401).json({ message: "Invalid credentials" });
-  }
 
   //UPDATE OR INSERT + INCREASE QUANTITY BY 1
   await Cart.updateOne(
-    { user: user._id, "items.product": productId },
+    { user: user._id, "items.product.id": productId },
     { $inc: { "items.$.quantity": 1 } },
     { upsert: true }
   );
