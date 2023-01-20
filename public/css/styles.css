@@ -163,14 +163,17 @@ ul li {
   border-radius: 0.5rem;
 }
 .close-button {
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
   font-size: 30px;
-  width: 40px;
-  line-height: 40px;
+  width: 36px;
+  line-height: 36px;
   text-align: center;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 18px;
   background-color: lightgray;
+  z-index: 1000;
 }
 .close-button:hover {
   background-color: darkgray;

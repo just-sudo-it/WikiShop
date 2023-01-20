@@ -28,9 +28,9 @@
             </label>
             <ul class="menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="./product-categories.html">Products</a></li>
-                <li><a href="about-us.html">About us</a></li>
-                <li><a href="contact-us.html">Contact Us</a></li>
+                <li><a href="html/product-categories.html">Products</a></li>
+                <li><a href="html/about-us.html">About us</a></li>
+                <li><a href="html/contact-us.html">Contact Us</a></li>
                 <li><a class="trigger" style="padding: 10px;cursor: pointer;">
                         <img src="../images/account-icon.jpg" class="account" alt="account-icon">
                     </a>
@@ -226,7 +226,6 @@
                 <div class="modal">
                     <div class="modal-content">
                         <span class="close-button">&times;</span>
-
                         <div class="container" id="container">
                             <div class="form-container sign-up-container">
                                 <form action="/register" method="post">
@@ -272,16 +271,11 @@
 
                     trigger.addEventListener("click", toggleModal);
                     closeButton.addEventListener("click", toggleModal);
-                    window.addEventListener("click", windowOnClick);
+
                     function toggleModal() {
                         modal.classList.toggle("show-modal");
                     }
 
-                    function windowOnClick(event) {
-                        if (event.target === modal) {
-                            toggleModal();
-                        }
-                    }
                     //LOGIN COMPONENT STATES HANDLING 
                     const signUpButton = document.getElementById('signUp');
                     const signInButton = document.getElementById('signIn');
@@ -296,9 +290,9 @@
                     });
                 </script>
 
-
             </div>
         </header>
+
 
         <main id="mainArticle">
             <h2 style="width: 100%; text-align: center;font-size: 2rem; font-weight: 500; letter-spacing: 1rem;">Fashion
@@ -375,10 +369,10 @@
                 <p>copyright &copy; <a href="#">Lefteris Michailidis - 0030 6982525424</a> </p>
                 <div class="footer-menu">
                     <ul class="f-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="product-categories.html">Products</a></li>
-                        <li><a href="contact-us.html" class="w3-bar-item w3-button">Contact Us</a></li>
-                        <li><a href="about-us">About Us</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="html/product-categories.html">Products</a></li>
+                        <li><a href="html/contact-us.html" class="w3-bar-item w3-button">Contact Us</a></li>
+                        <li><a href="html/about-us.html">About Us</a></li>
                     </ul>
                 </div>
             </div>
