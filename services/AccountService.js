@@ -28,20 +28,17 @@ const AccountService = {
   },
 
   async register(username, password) {
-    // Check if the user already exists
-
     var user = await User.findOne({ username: username, password: password });
     if (user) {
       return { error: "Username already exists" };
     }
-
     // create new session
     user = new User({
       username: username,
       sessionId: uuid.v4(),
       password: password,
     });
-    user.sessionId = uuid.v4();
+
     await user.save();
 
     return user.sessionId;

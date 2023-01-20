@@ -4,6 +4,7 @@ const accountRoutes = require("./routes/account");
 
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 
 //DB SET-UP
 require("./DB/db.js");
@@ -18,6 +19,7 @@ app.listen(8080, () => {
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors()); // add cors headers
 
 //ROUTING
 app.use("/cart", cartRoutes);

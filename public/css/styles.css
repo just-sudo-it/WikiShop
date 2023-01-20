@@ -525,7 +525,6 @@ a.product-frame:visited {
 
 .product-frame > div.product-card {
   padding: 10px;
-  display: inline-block;
   box-shadow: rgba(0, 0, 0, 0.17) 0px 4px 6px;
   transition: box-shadow 0.2s ease-in-out;
 }
