@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="grid-container">
+    <div class="grid-container">=
 
         <header id="pageHeader" class="site-header">
             <a href="/">
@@ -25,11 +25,11 @@
             </label>
             <ul class="menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="./product-categories.html">Products</a></li>
+                <li><a href="html/products-categories.html">Products</a></li>
                 <li><a href="html/about-us.html">About us</a></li>
                 <li><a href="html/contact-us.html">Contact Us</a></li>
                 <li><a class="trigger" style="padding: 10px;cursor: pointer;">
-                        <img src="../images/account-icon.jpg" class="account" alt="account-icon">
+                        <img class="account" alt="account-icon">
                     </a>
                 </li>
             </ul>
@@ -73,16 +73,6 @@
                         border-color: #FFFFFF;
                     }
 
-                    form {
-                        background-color: #FFFFFF;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-direction: column;
-                        padding: 0 50px;
-                        height: 100%;
-                        text-align: center;
-                    }
 
                     input {
                         background-color: #eee;
@@ -110,6 +100,14 @@
                         top: 0;
                         height: 100%;
                         transition: all 0.6s ease-in-out;
+                        background-color: #FFFFFF;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        padding: 0 50px;
+                        height: 100%;
+                        text-align: center;
                     }
 
                     .sign-in-container {
@@ -225,68 +223,39 @@
                         <span class="close-button">&times;</span>
                         <div class="container" id="container">
                             <div class="form-container sign-up-container">
-                                <form action="/register" method="post">
+                                <div action="/account/register" method="post">
                                     <h1>Create Account</h1>
-                                    <input type="text" name="username" placeholder="Name" />
-                                    <input type="password" name="password" placeholder="Password" />
-                                    <button>Sign Up</button>
-                                </form>
+                                    <input type="text" name="username" id="register-username" placeholder=" Name" />
+                                    <input type="password" name="password" id="register-password"
+                                        placeholder="Password" />
+                                    <button id="signUp">Sign Up</button>
+                                </div>
                             </div>
                             <div class="form-container sign-in-container">
-                                <form action="/login" method="post">
+                                <div action="/account/login" method="post">
                                     <h1>Sign in</h1>
-                                    <input type="text" name="username" placeholder="Name" />
-                                    <input type="password" name="password" placeholder="Password" />
-                                    <button>Sign In</button>
-                                </form>
+                                    <input type="text" name="username" id="username" placeholder="Name" />
+                                    <input type="password" name="password" id="password" placeholder="Password" />
+                                    <button id="signIn">Sign In</button>
+                                </div>
                             </div>
                             <div class="overlay-container">
                                 <div class="overlay">
                                     <div class="overlay-panel overlay-left">
                                         <h1>Welcome Back!</h1>
                                         <p>To keep connected with us please login with your personal info</p>
-                                        <button class="ghost" id="signIn">Sign In</button>
+                                        <button class="ghost" id="ghostSignIn">Sign In</button>
                                     </div>
                                     <div class="overlay-panel overlay-right">
                                         <h1>Hello, Friend!</h1>
                                         <p>Enter your personal details and start journey with us</p>
-                                        <button class="ghost" id="signUp">Sign Up</button>
+                                        <button class="ghost" id="ghostSignUp">Sign Up</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Script included here only because it belongs solely 
-                     to the header are that should be abstracted to a standalone component -->
-                <script>
-                    //MODAL HANDLING
-                    const modal = document.querySelector(".modal");
-                    const trigger = document.querySelector(".trigger");
-                    const closeButton = document.querySelector(".close-button");
-
-                    trigger.addEventListener("click", toggleModal);
-                    closeButton.addEventListener("click", toggleModal);
-
-                    function toggleModal() {
-                        modal.classList.toggle("show-modal");
-                    }
-
-                    //LOGIN COMPONENT STATES HANDLING 
-                    const signUpButton = document.getElementById('signUp');
-                    const signInButton = document.getElementById('signIn');
-                    const container = document.getElementById('container');
-
-                    signUpButton.addEventListener('click', () => {
-                        container.classList.add("right-panel-active");
-                    });
-
-                    signInButton.addEventListener('click', () => {
-                        container.classList.remove("right-panel-active");
-                    });
-                </script>
-
             </div>
         </header>
 
@@ -374,21 +343,24 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
 <script src="../js/categories.js"></script>
+<script src="../js/login-modal.js"></script>
 
 <script id="handlebars-product-frame" type="text/x-handlebars-template">
     {{#each categories}}
-        <a class="product-frame" href="products-smartphone-iphone14.html">
-            <div class="product-card">
-                <img src="{{image}}" alt="icon" class="net">
-                <h3>{{title}}</h3>
-                <div class="description">{{description}}</div>
-                <div class="price-card">
-                    <img src="../images/coin.png" alt="icon">
-                    <h4>{{cost}}</h5>
-                </div>
-                <h4>ID : {{id}}</h4>
+    <div class="product-frame">
+        <div class="product-card" onClick="addToCart(event)" 
+             data-id="{{id}}" data-title="{{title}}" data-cost="{{cost}}" data-description="{{description}}" data-image="{{image}}">
+            <img src="{{image}}" alt="icon" class="net">
+            <h3>{{title}}</h3>
+            <div class="description">{{description}}</div>
+            <div class="price-card">
+                <img src="../images/coin.png" alt="icon">
+                <h4>{{cost}}</h4>
             </div>
-        </a>
+            <h4>ID : {{id}}</h4>
+            <div class="add-to-cart-indicator">+</div>
+        </div>
+    </div>
     {{/each}}
 </script>
 

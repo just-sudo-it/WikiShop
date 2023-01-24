@@ -37,6 +37,7 @@ async function Init() {
   }
 }
 
+//HANDLEBARS RENDERING
 function renderData(products, subcategories) {
   renderCategoryProducts(products);
   renderSubcategories(subcategories);
@@ -58,6 +59,7 @@ function renderSubcategories(subcategories) {
   handlebarsSubcategoryHook.innerHTML = subcategoryHtml;
 }
 
+//API CALLS
 async function getProducts() {
   try {
     const response = await fetch(
@@ -90,4 +92,61 @@ function getProductsBySubcategory(subcategoryId) {
       product.subcategory_id === parseInt(subcategoryId) ||
       parseInt(subcategoryId) === 0
   );
+}
+
+async function addToCart(e) {
+  const { id, title, cost, description, image } = e.target.dataset;
+  const sessionId = sessionStorage.getItem("session-id");
+  const username = sessionStorage.getItem("username");
+
+  try {
+    // url????????????
+    const res = await fetch("http://localhost:8080/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "session-id": sessionId,
+      },
+      body: JSON.stringify({
+        id: id,
+        title: title,
+        cost: cost,
+        description: description,
+        image: image,
+        username: username,
+      }),
+    });
+    if (res?.redirected) {
+      window.location.href = res.url;
+    } else if (!res?.ok) {
+      console.log("Error");
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+async function getCartSize() {
+  const sessionId = sessionStorage.getItem("session-id");
+  const username = sessionStorage.getItem("username");
+
+  try {
+    const res = await fetch("/cart-size", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "session-id": sessionId,
+      },
+      body: JSON.stringify({ username: username }),
+    });
+
+    if (res?.redirected) {
+      window.location.href = res.url;
+    }
+
+    const { message } = await res.json();
+    console.log(message);
+  } catch (err) {
+    console.log(err);
+  }
 }

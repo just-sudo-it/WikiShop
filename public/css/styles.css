@@ -458,15 +458,21 @@ div.col {
   margin: 50px 0px 50px 0px;
 }
 
+/* product card styles*/
 .product-card {
   height: 540px;
   padding: 10px;
   margin: 20px;
   text-align: center;
   vertical-align: middle;
+  position: relative;
+  background-color: white;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px 4px 6px;
+  transition: box-shadow 0.2s ease-in-out;
+  transition: background-color 0.5s ease;
 }
 
-/* product card styles*/
 .product-card > img {
   max-width: 200px;
   width: 200px;
@@ -506,34 +512,36 @@ h5 {
   margin-bottom: 20px;
 }
 
-/* product frame styles */
-.product-frame {
-  margin: 20px;
-  width: 22%;
-  height: 520px;
-}
-
-a.product-frame:link {
-  color: var(--black);
-  text-decoration: none;
-}
-
-a.product-frame:visited {
-  color: var(--black);
-  text-decoration: none;
-}
-
-.product-frame > div.product-card {
-  padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px 4px 6px;
-  transition: box-shadow 0.2s ease-in-out;
-}
-
-.product-frame > div.product-card:hover {
+.product-card:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* product details frame */
+.product-card:hover .add-to-cart-indicator {
+  display: block;
+}
+
+.add-to-cart-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: color 0.5s ease, transform 0.5s ease;
+  font-size: 3.5em;
+  display: none;
+  color: white !important;
+}
+
+/* product frame styles */
+.product-frame {
+  margin: 20px;
+  width: 27%;
+  max-width: 560px;
+  height: 520px;
+}
+
+/* product DETAILS frame */
 .details-frame {
   display: block;
   width: 100%;
@@ -1148,7 +1156,7 @@ footer {
     width: auto;
   }
   .product-card {
-    width: 40%;
+    width: 100%;
     padding: 13px;
     margin: 25px 10px;
     text-align: center;
@@ -1205,12 +1213,14 @@ footer {
 
 @media only screen and (max-width: 768px) {
   .product-card {
-    width: 70%;
-    height: 590px;
     padding: 10px;
     margin: 25px 10px;
     text-align: center;
     vertical-align: middle;
+  }
+  .product-frame {
+    width: 40%;
+    margin-bottom: 10px;
   }
 }
 

@@ -2,7 +2,7 @@ const uuid = require("uuid");
 
 const { User } = require("../models/user");
 
-const AccountService = {
+const CartService = {
   async login(username, password) {
     var user = await User.findOne({ username: username, password: password });
     if (user) {
@@ -10,7 +10,7 @@ const AccountService = {
       user.sessionId = uuid.v4();
       await user.save();
 
-      return { sessionId: user.sessionId, user: user };
+      return user.sessionId;
     } else {
       return { error: "Invalid credentials" };
     }
@@ -28,10 +28,7 @@ const AccountService = {
   },
 
   async register(username, password) {
-    if (username.length < 4 || password.length < 4) {
-      return { error: "Username and password must be at least 4 characters" };
-    }
-    var user = await User.findOne({ username: username });
+    var user = await User.findOne({ username: username, password: password });
     if (user) {
       return { error: "Username already exists" };
     }
@@ -44,7 +41,7 @@ const AccountService = {
 
     await user.save();
 
-    return { sessionId: user.sessionId, user: user };
+    return user.sessionId;
   },
 };
-module.exports = AccountService;
+module.exports = CartService;

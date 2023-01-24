@@ -6,7 +6,11 @@ const User = mongoose.model(
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     sessionId: { type: String, required: false },
-    cart: { type: mongoose.Schema.Types.ObjectId, ref: "Cart" },
+    cart: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Cart",
+      required: false,
+    },
   })
 );
 
