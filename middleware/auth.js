@@ -8,7 +8,7 @@ const IsAuthorized = {
   async authenticate(req, res, next) {
     const sessionId = req.headers["session-id"] || req.body.sessionId;
 
-    if (!sessionId || sessionId === "null") {
+    if (!sessionId || sessionId === "null" || sessionId === "undefined") {
       return res.redirect(
         "error?" +
           new URLSearchParams({

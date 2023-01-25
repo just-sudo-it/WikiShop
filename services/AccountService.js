@@ -4,15 +4,19 @@ const { User } = require("../models/user");
 
 const AccountService = {
   async login(username, password) {
-    var user = await User.findOne({ username: username, password: password });
-    if (user) {
-      //LOG IN
-      user.sessionId = uuid.v4();
-      await user.save();
+    try {
+      var user = await User.findOne({ username: username, password: password });
+      if (user) {
+        //LOG IN
+        user.sessionId = uuid.v4();
+        await user.save();
 
-      return { sessionId: user.sessionId, user: user };
-    } else {
-      return { error: "Invalid credentials" };
+        return { sessionId: user.sessionId, user: user };
+      } else {
+        return { error: "Invalid credentials" };
+      }
+    } catch (err) {
+      return { error: "Not found " + err };
     }
   },
 
