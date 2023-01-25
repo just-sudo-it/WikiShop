@@ -10,11 +10,11 @@ const router = express.Router();
 //AUTHORIZED ROUTER
 router.use(auth.authenticate);
 
-router.post("/cart", async (req, res) => {
+router.post("/", async (req, res) => {
   const sessionId = req.headers["session-id"];
   const { id, title, cost, description, image, username } = req.body;
 
-  let product = await Product.findById(id);
+  let product = await Product.findOne({ id });
   if (!product) {
     product = await Product.create({ id, title, cost, description, image });
   }
@@ -29,7 +29,7 @@ router.post("/cart", async (req, res) => {
   res.json({ message: "Product added to cart" });
 });
 
-router.get("/cart-size", async (req, res) => {
+router.get("/size", async (req, res) => {
   const sessionId = req.headers["session-id"];
 
   const { username } = req.query;
