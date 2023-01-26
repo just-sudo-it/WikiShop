@@ -95,7 +95,7 @@ function getProductsBySubcategory(subcategoryId) {
 }
 
 async function addToCart(e) {
-  const { id, title, cost, description, image } = e.target.dataset;
+  const { id, title, cost, description, image } = e.currentTarget.dataset;
   const sessionId = sessionStorage.getItem("session-id");
   const username = sessionStorage.getItem("username");
 
@@ -108,11 +108,13 @@ async function addToCart(e) {
         "session-id": sessionId,
       },
       body: JSON.stringify({
-        id: id,
-        title: title,
-        cost: cost,
-        description: description,
-        image: image,
+        product: {
+          id: id,
+          title: title,
+          cost: cost,
+          description: description,
+          image: image,
+        },
         username: username,
       }),
     });

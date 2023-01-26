@@ -24,6 +24,8 @@ const AccountService = {
     var user = await User.findOne({ sessionId: sessionId });
     if (user) {
       user.sessionId = null;
+      user.cart = null;
+
       await user.save();
     } else {
       return { error: "Invalid session" };
