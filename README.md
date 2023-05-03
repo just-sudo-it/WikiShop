@@ -1,13 +1,5 @@
 ```bash
-.
-├── index.js
-├── models
-└── public
-    ├── index.html
-    ├── css
-    |   └── style.css
-    └── js
-        └── main.js
+
 ```
 
 Required dependencies in package.json
