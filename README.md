@@ -1,7 +1,3 @@
-```bash
-
-```
-
 Required dependencies in package.json
 Install using the command :
 ```
